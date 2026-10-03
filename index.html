@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aswinkumar R | Data Analyst Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #07111f;
+    --bg2: #0b1728;
+    --card: rgba(15, 29, 49, 0.78);
+    --border: rgba(255,255,255,.10);
+    --text: #eef6ff;
+    --muted: #9cafc5;
+    --cyan: #22d3ee;
+    --blue: #3b82f6;
+    --purple: #8b5cf6;
+    --green: #34d399;
+    --orange: #fb923c;
+    --pink: #f472b6;
+    --shadow: 0 20px 60px rgba(0,0,0,.30);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(34,211,238,.12), transparent 25%),
+        radial-gradient(circle at 90% 20%, rgba(139,92,246,.14), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(59,130,246,.08), transparent 30%),
+        var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Analytical background */
+
+.grid-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    opacity: .22;
+    background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 55px 55px;
+}
+
+.data-points {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.dot {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 15px var(--cyan);
+    animation: float 5s infinite ease-in-out;
+}
+
+.dot:nth-child(1) {left: 8%; top: 22%; animation-delay: 0s;}
+.dot:nth-child(2) {left: 20%; top: 72%; animation-delay: 1s;}
+.dot:nth-child(3) {left: 35%; top: 35%; animation-delay: 2s;}
+.dot:nth-child(4) {left: 57%; top: 18%; animation-delay: 1.5s;}
+.dot:nth-child(5) {left: 76%; top: 60%; animation-delay: .5s;}
+.dot:nth-child(6) {left: 90%; top: 30%; animation-delay: 2.5s;}
+
+@keyframes float {
+    50% {
+        transform: translateY(-20px) scale(1.4);
+        opacity: .5;
+    }
+}
+
+/* Navigation */
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(18px);
+    background: rgba(7,17,31,.72);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: "Space Grotesk";
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: var(--cyan);
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--cyan);
+}
+
+/* General */
+
+.container {
+    width: min(1150px, 92%);
+    margin: auto;
+}
+
+section {
+    padding: 100px 0;
+}
+
+.section-title {
+    font-family: "Space Grotesk";
+    font-size: clamp(30px, 5vw, 48px);
+    margin-bottom: 15px;
+}
+
+.section-title span {
+    color: var(--cyan);
+}
+
+.section-subtitle {
+    color: var(--muted);
+    max-width: 650px;
+    margin-bottom: 45px;
+}
+
+/* Hero */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 90px;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr .75fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid rgba(34,211,238,.25);
+    border-radius: 50px;
+    background: rgba(34,211,238,.07);
+    color: var(--cyan);
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+.badge i {
+    width: 8px;
+    height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--green);
+}
+
+.hero h1 {
+    font-family: "Space Grotesk";
+    font-size: clamp(46px, 7vw, 78px);
+    line-height: 1.02;
+    margin-bottom: 22px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple), var(--pink));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero-description {
+    color: var(--muted);
+    font-size: 18px;
+    max-width: 680px;
+    margin-bottom: 32px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 13px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.btn-primary {
+    color: #03111d;
+    background: linear-gradient(90deg, var(--cyan), #60a5fa);
+}
+
+.btn-secondary {
+    color: var(--text);
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.04);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+/* Analytics visual */
+
+.analytics-card {
+    position: relative;
+    padding: 25px;
+    min-height: 370px;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background: var(--card);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.analytics-card::before {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: var(--purple);
+    filter: blur(100px);
+    opacity: .15;
+    right: -100px;
+    top: -100px;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.chart-header small {
+    color: var(--muted);
+}
+
+.chart {
+    height: 220px;
+    position: relative;
+    border-left: 1px solid rgba(255,255,255,.15);
+    border-bottom: 1px solid rgba(255,255,255,.15);
+}
+
+.chart svg {
+    width: 100%;
+    height: 100%;
+}
+
+.chart-line {
+    fill: none;
+    stroke: var(--cyan);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 8px rgba(34,211,238,.6));
+}
+
+.chart-area {
+    fill: url(#gradient);
+    opacity: .25;
+}
+
+.chart-dot {
+    fill: var(--cyan);
+    stroke: #07111f;
+    stroke-width: 3;
+}
+
+.chart-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.chart-stats strong {
+    font-size: 22px;
+}
+
+.chart-stats span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* KPI */
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 18px;
+}
+
+.kpi {
+    padding: 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    transition: .3s;
+}
+
+.kpi:hover {
+    transform: translateY(-6px);
+    border-color: rgba(34,211,238,.35);
+}
+
+.kpi-number {
+    font-family: "Space Grotesk";
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.kpi-label {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* About */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+}
+
+.card h3 {
+    font-family: "Space Grotesk";
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: var(--muted);
+}
+
+/* Skills */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 25px;
+}
+
+.skill {
+    margin-bottom: 22px;
+}
+
+.skill-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.skill-head span {
+    color: var(--muted);
+}
+
+.progress {
+    height: 8px;
+    background: rgba(255,255,255,.07);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    border-radius: 20px;
+    background: linear-gradient(90deg,var(--cyan),var(--blue),var(--purple));
+    transition: width 1.5s ease;
+}
+
+/* Experience */
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(var(--cyan),var(--purple),transparent);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 65px;
+    margin-bottom: 45px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 9px;
+    top: 8px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 20px var(--cyan);
+}
+
+.timeline-date {
+    color: var(--cyan);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.timeline-item h3 {
+    font-family: "Space Grotesk";
+    font-size: 23px;
+}
+
+.timeline-item h4 {
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+.timeline-item p {
+    color: var(--muted);
+}
+
+/* Projects */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 25px;
+}
+
+.project {
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(15,29,49,.9), rgba(9,19,33,.85));
+    border: 1px solid var(--border);
+    transition: .35s;
+}
+
+.project:hover {
+    transform: translateY(-8px);
+    border-color: rgba(34,211,238,.4);
+}
+
+.project-number {
+    color: var(--cyan);
+    font-family: "Space Grotesk";
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.project h3 {
+    font-family: "Space Grotesk";
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.project p {
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    background: rgba(34,211,238,.08);
+    color: var(--cyan);
+    border: 1px solid rgba(34,211,238,.15);
+}
+
+/* Certifications */
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 18px;
+}
+
+.cert {
+    padding: 22px;
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+}
+
+.cert-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.cert h3 {
+    font-size: 17px;
+    margin-bottom: 6px;
+}
+
+.cert p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* Contact */
+
+.contact {
+    text-align: center;
+}
+
+.contact-card {
+    max-width: 850px;
+    margin: auto;
+    padding: 55px 30px;
+    border-radius: 28px;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(34,211,238,.12), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(139,92,246,.15), transparent 30%),
+        var(--card);
+    border: 1px solid var(--border);
+}
+
+.contact-card h2 {
+    font-family: "Space Grotesk";
+    font-size: clamp(32px,5vw,55px);
+    margin-bottom: 15px;
+}
+
+.contact-card p {
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.contact-links a {
+    color: var(--text);
+    text-decoration: none;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.contact-links a:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+}
+
+/* Footer */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 25px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* Responsive */
+
+@media(max-width: 850px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero-grid,
+    .about-grid,
+    .skills-grid,
+    .project-grid,
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .kpi-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    section {
+        padding: 75px 0;
+    }
+}
+
+@media(max-width: 500px) {
+
+    .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        text-align: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid-bg"></div>
+
+<div class="data-points">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+</div>
+
+<!-- NAVIGATION -->
+
+<nav>
+    <div class="nav-container">
+
+        <div class="logo">
+            AS<span>.</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="container">
+
+<div class="hero-grid">
+
+<div>
+
+<div class="badge">
+<i></i>
+Available for Data Analytics Opportunities
+</div>
+
+<h1>
+Hi, I'm <span class="gradient-text">Aswinkumar R</span>
+</h1>
+
+<h2 style="margin-bottom:18px;color:#d9e8f7;">
+Data Analyst & Data Science Professional
+</h2>
+
+<p class="hero-description">
+I transform complex data into meaningful insights, interactive dashboards,
+and predictive solutions that support smarter business decisions.
+</p>
+
+<div class="buttons">
+
+<a href="#projects" class="btn btn-primary">
+Explore My Work →
+</a>
+
+<a href="#contact" class="btn btn-secondary">
+Let's Connect
+</a>
+
+</div>
+
+</div>
+
+
+<!-- ANALYTICS CARD -->
+
+<div class="analytics-card">
+
+<div class="chart-header">
+
+<div>
+<strong>Analytics Dashboard</strong>
+<br>
+<small>Data → Insight → Decision</small>
+</div>
+
+<div style="color:#34d399;">● LIVE</div>
+
+</div>
+
+<div class="chart">
+
+<svg viewBox="0 0 500 220" preserveAspectRatio="none">
+
+<defs>
+<linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#22d3ee"/>
+<stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+</linearGradient>
+</defs>
+
+<path
+class="chart-area"
+d="M0 185
+L65 165
+L125 175
+L185 120
+L245 140
+L305 80
+L365 105
+L430 50
+L500 70
+L500 220
+L0 220 Z"
+/>
+
+<path
+class="chart-line"
+d="M0 185
+L65 165
+L125 175
+L185 120
+L245 140
+L305 80
+L365 105
+L430 50
+L500 70"
+/>
+
+<circle class="chart-dot" cx="65" cy="165" r="6"/>
+<circle class="chart-dot" cx="185" cy="120" r="6"/>
+<circle class="chart-dot" cx="305" cy="80" r="6"/>
+<circle class="chart-dot" cx="430" cy="50" r="6"/>
+
+</svg>
+
+</div>
+
+<div class="chart-stats">
+
+<div>
+<strong>4+</strong>
+<br>
+<span>Years Analytics</span>
+</div>
+
+<div>
+<strong>10+</strong>
+<br>
+<span>Tools & Libraries</span>
+</div>
+
+<div>
+<strong>20%</strong>
+<br>
+<span>Process Efficiency</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- KPI -->
+
+<section>
+
+<div class="container">
+
+<div class="kpi-grid">
+
+<div class="kpi">
+<div class="kpi-number">4+</div>
+<div class="kpi-label">Years of Analytics Experience</div>
+</div>
+
+<div class="kpi">
+<div class="kpi-number">30%</div>
+<div class="kpi-label">Manual Effort Reduction</div>
+</div>
+
+<div class="kpi">
+<div class="kpi-number">20%</div>
+<div class="kpi-label">Reporting Efficiency Improvement</div>
+</div>
+
+<div class="kpi">
+<div class="kpi-number">15%</div>
+<div class="kpi-label">Customer Retention Improvement</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="container">
+
+<h2 class="section-title">
+About <span>Me</span>
+</h2>
+
+<p class="section-subtitle">
+A data-driven professional focused on analytics, visualization,
+business intelligence and predictive analytics.
+</p>
+
+<div class="about-grid">
+
+<div class="card">
+
+<h3>📊 Data-Driven Problem Solver</h3>
+
+<p>
+I specialize in transforming raw datasets into meaningful business insights
+through data cleaning, statistical analysis, visualization and predictive
+modelling.
+</p>
+
+<br>
+
+<p>
+My experience includes working with Power BI, Excel, SAP datasets,
+SQL, Python and machine-learning techniques to support business decisions.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🚀 Professional Focus</h3>
+
+<p>
+My goal is to combine analytical thinking, technical skills and business
+understanding to create solutions that improve operational efficiency and
+support strategic decision-making.
+</p>
+
+<br>
+
+<div class="tags">
+
+<span class="tag">Data Analytics</span>
+<span class="tag">Business Intelligence</span>
+<span class="tag">Power BI</span>
+<span class="tag">Python</span>
+<span class="tag">SQL</span>
+<span class="tag">Machine Learning</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+<div class="container">
+
+<h2 class="section-title">
+Technical <span>Skills</span>
+</h2>
+
+<p class="section-subtitle">
+A combination of programming, analytics, visualization and business
+intelligence capabilities.
+</p>
+
+
+<div class="skills-grid">
+
+<div class="card">
+
+<h3>Programming & Data</h3>
+
+<div class="skill">
+<div class="skill-head">
+<strong>Python</strong>
+<span>90%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="90%"></div>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-head">
+<strong>SQL</strong>
+<span>85%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="85%"></div>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-head">
+<strong>Pandas / NumPy</strong>
+<span>90%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="90%"></div>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-head">
+<strong>Data Preprocessing</strong>
+<span>90%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="90%"></div>
+</div>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>Analytics & Visualization</h3>
+
+<div class="skill">
+<div class="skill-head">
+<strong>Power BI</strong>
+<span>90%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="90%"></div>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-head">
+<strong>Data Visualization</strong>
+<span>90%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="90%"></div>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-head">
+<strong>Statistical Analysis</strong>
+<span>85%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="85%"></div>
+</div>
+</div>
+
+<div class="skill">
+<div class="skill-head">
+<strong>Machine Learning</strong>
+<span>80%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" data-width="80%"></div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- EXPERIENCE -->
+
+<section id="experience">
+
+<div class="container">
+
+<h2 class="section-title">
+Professional <span>Journey</span>
+</h2>
+
+<p class="section-subtitle">
+Experience in data analytics, reporting, data quality and predictive analytics.
+</p>
+
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-date">
+APR 2024 — PRESENT
+</div>
+
+<h3>Data Analyst</h3>
+
+<h4>HCLTech · Chennai</h4>
+
+<p>
+Developed Power BI dashboards for KPI tracking, worked with SAP datasets,
+performed data cleaning and quality checks, created ad-hoc reports and
+supported business teams with accurate analytical insights.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-date">
+APR 2022 — MAR 2024
+</div>
+
+<h3>Data Analyst</h3>
+
+<h4>TVS Automobile Solutions Pvt. Ltd. · Chennai</h4>
+
+<p>
+Managed and analyzed customer datasets, streamlined data collection and
+reporting processes, performed predictive analytics for customer churn,
+and delivered data-driven insights to stakeholders.
+</p>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<div class="container">
+
+<h2 class="section-title">
+Featured <span>Projects</span>
+</h2>
+
+<p class="section-subtitle">
+Selected analytical projects demonstrating data exploration,
+visualization and business insight generation.
+</p>
+
+
+<div class="project-grid">
+
+
+<div class="project">
+
+<div class="project-number">01 / DATA ANALYTICS</div>
+
+<h3>Netflix — Data Exploration & Visualization</h3>
+
+<p>
+Explored Netflix content data to identify content distribution,
+release trends, genre relationships and patterns across movies
+and TV shows.
+</p>
+
+<div class="tags">
+
+<span class="tag">Python</span>
+<span class="tag">NumPy</span>
+<span class="tag">Pandas</span>
+<span class="tag">Matplotlib</span>
+<span class="tag">EDA</span>
+
+</div>
+
+</div>
+
+
+<div class="project">
+
+<div class="project-number">02 / BUSINESS ANALYTICS</div>
+
+<h3>Aerofit — Descriptive Statistics & Probability</h3>
+
+<p>
+Analyzed customer demographics, income patterns and treadmill
+preferences to develop product positioning and marketing insights.
+</p>
+
+<div class="tags">
+
+<span class="tag">Pandas</span>
+<span class="tag">NumPy</span>
+<span class="tag">Matplotlib</span>
+<span class="tag">Seaborn</span>
+<span class="tag">SciPy</span>
+
+</div>
+
+</div>
+
+
+<div class="project">
+
+<div class="project-number">03 / MACHINE LEARNING</div>
+
+<h3>Movie Revenue Prediction</h3>
+
+<p>
+Built a supervised machine-learning regression system to predict
+movie revenue using movie budget, popularity, runtime, ratings,
+release information and categorical movie attributes.
+</p>
+
+<div class="tags">
+
+<span class="tag">Python</span>
+<span class="tag">Scikit-learn</span>
+<span class="tag">Random Forest</span>
+<span class="tag">Regression</span>
+<span class="tag">Feature Engineering</span>
+
+</div>
+
+</div>
+
+
+<div class="project">
+
+<div class="project-number">04 / BUSINESS INTELLIGENCE</div>
+
+<h3>KPI Reporting & Power BI Dashboards</h3>
+
+<p>
+Created analytical dashboards and ad-hoc reports to track KPIs,
+improve reporting speed and provide business stakeholders with
+actionable insights.
+</p>
+
+<div class="tags">
+
+<span class="tag">Power BI</span>
+<span class="tag">Excel</span>
+<span class="tag">SAP</span>
+<span class="tag">KPI Analysis</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- CERTIFICATIONS -->
+
+<section id="certifications">
+
+<div class="container">
+
+<h2 class="section-title">
+Certifications & <span>Learning</span>
+</h2>
+
+<p class="section-subtitle">
+Continuous development across data science, analytics,
+business intelligence and AI.
+</p>
+
+
+<div class="cert-grid">
+
+<div class="cert">
+<div class="cert-icon">🤖</div>
+<h3>Data Science & Machine Learning</h3>
+<p>Scaler by Interviewbit & Entrie Learning App · 2026</p>
+</div>
+
+<div class="cert">
+<div class="cert-icon">📊</div>
+<h3>Power BI & SQL</h3>
+<p>HCLTech Learning — STAR Academy · 2025</p>
+</div>
+
+<div class="cert">
+<div class="cert-icon">✨</div>
+<h3>Gen AI Foundation for Beginners</h3>
+<p>HCL DPO Talent Development · 2024</p>
+</div>
+
+<div class="cert">
+<div class="cert-icon">📣</div>
+<h3>Fundamentals of Digital Marketing</h3>
+<p>Google Unlock · 2021</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- EDUCATION -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+Education <span>Journey</span>
+</h2>
+
+<div class="about-grid">
+
+<div class="card">
+
+<h3>🎓 MBA — Systems & Marketing</h3>
+
+<p>
+Gnanam School of Business, Anna University
+Thanjavore
+</p>
+
+<br>
+
+<strong>8.84 CGPA</strong>
+
+<p>2020 — 2022</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>⚙️ B.E. — Mechatronics Engineering</h3>
+
+<p>
+Coimbatore Institute of Engineering and Technology,
+Anna University
+</p>
+
+<br>
+
+<strong>8.91 CGPA · Gold Medalist</strong>
+
+<p>2013 — 2017</p>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ACHIEVEMENTS -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+Achievements & <span>Recognition</span>
+</h2>
+
+<div class="project-grid">
+
+<div class="card">
+
+<h3>🏆 Best MIS Support — 2025</h3>
+
+<p>
+Recognized at HCLTech for quick preparation of ad-hoc reports
+and delivering insights on time.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>⭐ Employee of the Month — 2024</h3>
+
+<p>
+Recognized at TVS Automobile Solutions for outstanding data
+insights and timely reporting.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>🥇 Gold Medalist — 2017</h3>
+
+<p>
+Overall Rank Holder and Gold Medalist in Mechatronics Engineering.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>📑 Research Presentation</h3>
+
+<p>
+Presented research on predictive analytics at MICA Conference —
+ICMA 2022.
+</p>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact">
+
+<div class="container">
+
+<div class="contact-card">
+
+<h2>
+Let's Turn <span class="gradient-text">Data Into Impact.</span>
+</h2>
+
+<p>
+Interested in analytics, business intelligence, data science
+or machine-learning opportunities? Let's connect.
+</p>
+
+<div class="contact-links">
+
+<a href="mailto:aswinkumar22@gmail.com.com">
+✉ Email
+</a>
+
+<a href="https://www.linkedin.com/in/aswinkumar-r/" target="_blank">
+in LinkedIn
+</a>
+
+<a href="https://github.com/bharathiaswin22-wq" target="_blank">
+⌘ GitHub
+</a>
+
+<a href="tel:9080221239">
+☎ 9080221239
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+© 2026 Aswinkumar R · Data Analyst & Data Science Professional
+
+</footer>
+
+
+<script>
+
+/* Animated skill bars */
+
+const bars = document.querySelectorAll(".progress-bar");
+
+const observer = new IntersectionObserver(entries => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting) {
+
+const width = entry.target.dataset.width;
+
+entry.target.style.width = width;
+
+}
+
+});
+
+},{threshold:.4});
+
+bars.forEach(bar => observer.observe(bar));
+
+
+/* Number counter animation */
+
+const counters = document.querySelectorAll(".kpi-number");
+
+counters.forEach(counter => {
+
+const original = counter.innerText;
+
+const number = parseInt(original);
+
+if(!isNaN(number)) {
+
+let start = 0;
+
+const interval = setInterval(() => {
+
+start++;
+
+counter.innerText = start + original.replace(/[0-9]/g,"");
+
+if(start >= number) {
+
+clearInterval(interval);
+
+counter.innerText = original;
+
+}
+
+},50);
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
